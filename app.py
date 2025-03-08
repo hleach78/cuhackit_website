@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import os
 import json
-from utils import callAPI
+from API.utils import callAPI
 
 app = Flask(__name__)
 data_file = "submitted_data.json"
