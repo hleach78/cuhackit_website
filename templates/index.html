@@ -7,13 +7,18 @@
     <p>This is the homepage.</p>
 
     <form action="/" method="POST">
-        <label for="user_input">Enter Prompt Here:</label>
-        <input type="text" id="user_input" name="user_input">
+        <label for="user_input">Enter Your Name:</label>
+        <input type="text" id="user_name" name="user_name">
+        <br>
+         <label for="user_input">Enter Your Current or Previous Classes:</label>
+        <input type="text" id="user_classes" name="user_classes">
+
         <button type="submit">Submit</button>
     </form>
 
-    {% if submitted_text %}
-        <p><span>Prompt:</span> <span class="submitted-text">{{ submitted_text }}</span></p>
+    {% if submitted_name and submitted_classes %}
+        <p><span>Name:</span> <span class="submitted-text">{{ submitted_name }}</span></p>
+        <p><span>Current/Previous Classes:</span> <span class="submitted-text">{{ submitted_classes }}</span></p>
     {% endif %}
 
 {% endblock %}
