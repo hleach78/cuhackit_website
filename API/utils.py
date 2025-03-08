@@ -9,23 +9,21 @@ def callAPI(student):
 
     # Extract courses from the student object
     completed_courses = "\n".join([f"- {course}" for course in student.get("completed_courses", [])])
-    current_courses = "\n".join([f"- {course}" for course in student.get("current_courses", [])])
     'time_constraints = student.get("time_constraints", "None")  # Default to "None" if empty'
 
 
     input_text = (f"I am currently planning my class schedule for the next semester. Here is a list of courses I have "
-                  f"already completed or am currently enrolled in. Use this to determine which courses I am eligible to take:\n\n"
+                  f"already completed. Use this to determine which courses I am eligible to take:\n\n"
                   f"**Completed Courses:**\n{completed_courses if completed_courses else 'None'}\n\n"
-                  f"**Currently Enrolled Courses:**\n{current_courses if current_courses else 'None'}\n\n"
                   f"**Class Offerings for the Next Semester:** [Provide the list of available courses in JSON format]\n\n"
-                  f"**Task:** Based on the courses I have already completed and the available class offerings for the next semester, "
+                  f"**Task:** Based on the courses I have already completed, "
                   f"create a class schedule for me. Please make sure to:\n"
                   f"1. Recommend only those courses for which I meet the prerequisites.\n"
                   f"2. Ensure no recommended courses have overlapping class times.\n"
                   f"3. Align your recommendations with my current academic progress and graduation year.\n"
                   f"4. Ensure the schedule is appropriate for my academic standing and does not include courses I’m not eligible to take."
-                  f"5. Ensure that your recommended scheduled is at least 12 credits, use the credit information for each class and aim for 16-18 while staying within the requirements."
-                  f"6. If a course has prerequisites, only recommend it if I have already completed or am currently enrolled in those prerequisites."
+                  f"5. Ensure that your recommended scheduled is between 15 and 18 credits"
+                  f"6. If a course has prerequisites, only recommend it if I have already completed the prerequisites."
                   f"7. Do not recommend any course that requires a prerequisite I have not taken or am not currently enrolled in."
 
                   )
