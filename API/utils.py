@@ -3,15 +3,11 @@ import json
 
 from botocore.exceptions import ClientError
 
-
+# Calls the API connected to scheduling knowledge base
+# Parameter: student- contains the students name and previously taken courses
 def callAPI(student):
     kb_id = "IIPMMYP0DR"
 
-    # Extract courses from the student object
-    test = student.get("completed_courses")
-    print(test)
-
-    #'time_constraints = student.get("time_constraints", "None")  # Default to "None" if empty'
 
     input_text = (f"I am currently planning my class schedule for the next semester. Here is a list of courses I have "
                   f"already completed. Use this to create a list of classes I should take next semester:\n\n"
