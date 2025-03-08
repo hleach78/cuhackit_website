@@ -8,7 +8,7 @@ from botocore.exceptions import ClientError
 def callAPI(student):
     kb_id = "IIPMMYP0DR"
 
-
+    # Prompt to input into LLM
     input_text = (f"I am currently planning my class schedule for the next semester. Here is a list of courses I have "
                   f"already completed. Use this to create a list of classes I should take next semester:\n\n"
                   f"**Completed Courses: {student.get("completed_courses")}\n\n"
@@ -23,16 +23,9 @@ def callAPI(student):
                   f"7. Include class times and dates"
                   )
 
-
+    # Call to API
     response = retrieveAndGenerate(input_text, kb_id)
     return response
-    #print(response)
-    #answer = createList(response)
-
-    # if answer:
-    #     return answer
-    # else:
-    #     print("No response received from AWS Bedrock.")
 
 def retrieveAndGenerate(input_text, kb_id):
     session_id = None
@@ -66,6 +59,7 @@ def retrieveAndGenerate(input_text, kb_id):
         print(f"Error retrieving and generating response: {e}")
         return None
 
+# Call to Llama 3.2 3B to help with output formatting
 def createList(response):
     client = boto3.client("bedrock-runtime", region_name="us-west-2")
     model_id = "arn:aws:bedrock:us-west-2:363793501045:inference-profile/us.meta.llama3-2-1b-instruct-v1:0"
