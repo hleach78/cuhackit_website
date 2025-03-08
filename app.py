@@ -32,10 +32,14 @@ def home():
             collect_data(submitted_name, submitted_courses)
             student = {
                 "name": submitted_name,
-                "completed_courses": [],
-                "current_courses": submitted_courses.split(",")
+                "completed_courses": submitted_courses.split(", "),
+                "current_courses": []
             }
-            recommendation = callAPI(student)
+            response = callAPI(student)
+
+            if response:
+                recommendation = response.split("\n")
+
     return render_template("index.html", submitted_name=submitted_name,
             submitted_courses=submitted_courses, recommendation=recommendation)
 
