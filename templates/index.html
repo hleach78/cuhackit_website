@@ -26,11 +26,6 @@
 
         {% if recommendation %}
             <p><strong>Recommendation:</strong>
-            <ul>
-                {% for course in recommendations %}
-                    <li class="submitted-text">{{ course }}</li>
-                {% endfor %}
-            </ul>
             <p> {{  recommendation }}</p><br>
         {% else %}
             <p>AI Advisor could not find a solution.</p>

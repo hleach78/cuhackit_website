@@ -33,7 +33,6 @@ def home():
             student = {
                 "name": submitted_name,
                 "completed_courses": submitted_courses.split(", "),
-                "current_courses": []
             }
             response = callAPI(student)
 
