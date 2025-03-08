@@ -23,9 +23,13 @@
         <h3>AI Advisor</h3>
         <p><strong>Name:</strong> <span class="submitted-text">{{ submitted_name }}</span></p>
         <p><strong>Current/Previous Classes:</strong> <span class="submitted-text">{{ submitted_courses }}</span></p>
-        <p><strong>Recommendation:</strong></p>
+
+        {% if recommendation %}
+            <p><strong>Recommendation:</strong>
+            <p> {{  recommendation }}</p>
+        {% else %}
+            <p>AI Advisor could not find a solution.</p>
+        {% endif %}
     </div>
 {% endif %}
-
-
 {% endblock %}
