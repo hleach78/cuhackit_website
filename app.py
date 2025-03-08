@@ -22,6 +22,7 @@ def collect_data(name, courses):
         json.dump(allData, file, indent = 4)
 @app.route("/", methods = ["GET", "POST"])
 def home():
+    #Taking in the data necessary to get the AI response
     submitted_name = None
     submitted_courses = None
     recommendation = None
