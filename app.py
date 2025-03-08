@@ -12,12 +12,12 @@ def collect_data(data):
         with open(data_file, "r") as file:
             allData = json.load(file)
     else:
-        allData = []
+        allData = {"data":[] }
 
-    allData.append(data)
+    allData["data"].append(data)
 
     with open(data_file, "w") as file:
-        json.dump(allData, file)
+        json.dump(allData, file, indent = 4)
 @app.route("/", methods = ["GET", "POST"])
 def home():
     submitted_text = None
