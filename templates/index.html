@@ -6,19 +6,26 @@
     <h1 class= "title">Welcome to My Flask App</h1>
     <p>This is the homepage.</p>
 
-    <form action="/" method="POST">
-        <label for="user_input">Enter Your Name:</label>
-        <input type="text" id="user_name" name="user_name">
-        <br>
-         <label for="user_input">Enter Your Current or Previous Classes:</label>
-        <input type="text" id="user_classes" name="user_classes">
+<form action="/" method="POST">
+    <label for="user_name">Enter Your Name:</label>
+    <input type="text" id="user_name" name="user_name" required>
+    <br><br>
 
-        <button type="submit">Submit</button>
-    </form>
+    <label for="user_classes">Enter Your Current or Previous Classes:</label>
+    <input type="text" id="user_classes" name="user_classes" required>
+    <br><br>
 
-    {% if submitted_name and submitted_classes %}
-        <p><span>Name:</span> <span class="submitted-text">{{ submitted_name }}</span></p>
-        <p><span>Current/Previous Classes:</span> <span class="submitted-text">{{ submitted_classes }}</span></p>
-    {% endif %}
+    <button type="submit">Submit</button>
+</form>
+
+
+{% if submitted_name and submitted_courses %}
+    <div class="output-box">
+        <h3>AI Advisor</h3>
+        <p><strong>Name:</strong> <span class="submitted-text">{{ submitted_name }}</span></p>
+        <p><strong>Current/Previous Classes:</strong> <span class="submitted-text">{{ submitted_courses }}</span></p>
+    </div>
+{% endif %}
+
 
 {% endblock %}
