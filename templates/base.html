@@ -55,6 +55,24 @@
         .output-box h3 {
             color:#F56600
         }
+        .spinner {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #F56600;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -60px; /* Half the width */
+            margin-top: -60px; /* Half the height */
+            display: none; /* Hide by default */
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -65,5 +83,15 @@
     <div class="content">
         {% block content %}{% endblock %}
     </div>
+
+    <div id="loadingSpinner" class="spinner"></div>
+
+    <script>
+        document.querySelector("form").onsubmit = function() {
+            document.getElementById("loadingSpinner").style.display = "block";
+            document.getElementById("result-box").style.display = "none";
+        }
+    </script>
+
 </body>
 </html>
